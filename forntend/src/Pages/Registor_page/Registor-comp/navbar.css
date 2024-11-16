@@ -9,11 +9,13 @@ body{
 
 }
 .nav{
-
     background-color:hsl(199, 98%, 48%); 
     display: flex;
     align-items: center;
     height: 90px;
+    position: fixed;
+    right: 0;
+    left: 0;
 }
 .nav-title{
     flex: 3;

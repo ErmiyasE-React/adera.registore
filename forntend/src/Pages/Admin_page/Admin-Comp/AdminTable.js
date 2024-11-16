@@ -63,14 +63,13 @@ const rows = [
     { "id": 35, "lastName": "Frances", "firstName": "Rossini", "age": 36 },
     { "id": 36, "lastName": "Roxie", "firstName": "Harvey", "age": 65 }
   
-  
 ];
 
 const paginationModel = { page: 0, pageSize: 10 };
 
 export default function DataTable() {
   return (
-    <Paper sx={{ height: 700, width: '80%' ,padding:3,marginLeft:"90px"}}>
+    <Paper sx={{ height: 700, width: '80%' ,padding:3,marginLeft:"90px",marginTop:"100px"}}>
       <DataGrid
         rows={rows}
         columns={columns}
