@@ -13,11 +13,13 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />}>
-        <Route path="" element={<LoginCard />} />
+      
+        <Route path="login" element={<LoginCard />} />
       </Route>
-
+      
       <Route path='/Registor' element={<Registor />}>
          <Route path='' element={<RegitorBody/>}/>
+        
       </Route>
 
       <Route path='/Admin' element={<Admin />}>
