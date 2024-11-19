@@ -16,7 +16,7 @@ app.use(cors()); // Enable CORS for all routes
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'Adare',
+  database: 'adare',
   password: 'ermi@21',
   port: 5432,
 });
@@ -121,12 +121,25 @@ app.post('/pizzas', authenticate, async (req, res) => {
 // Fetch all users
 app.get('/users', async (req, res) => {
   try {
-    const result = await pool.query('SELECT name, email, role FROM users');
-    res.json({ users: result.rows });
+    const result = await pool.query(
+      'SELECT id, first_name, last_name, middle_name, mom_name, sex, income FROM personal_details'
+    );
+
+    // Optionally format the data if needed
+    const users = result.rows.map(user => ({
+      id: user.id,
+      full_name: `${user.first_name} ${user.middle_name || ''} ${user.last_name}`,
+      mom_name: user.mom_name,
+      sex: user.sex,
+      income: parseFloat(user.income).toFixed(2), // Format income as a string with 2 decimal places
+    }));
+
+    res.json({ users });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 // Test Endpoint
 app.get('/', (req, res) => {
